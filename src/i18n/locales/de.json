@@ -1,0 +1,69 @@
+{
+  "header": {
+    "about": "Über mich",
+    "experience": "Erfahrung",
+    "skills": "Fähigkeiten",
+    "contact": "Kontakt",
+    "toggleTheme": "Design ändern"
+  },
+  "hero": {
+    "title": "Senior Software Engineer",
+    "description": "Spezialisiert auf Backend-, Frontend- und Datenbankentwicklung mit über 7 Jahren Erfahrung. Experte für .NET, React, Angular, MSSQL. Leidenschaftlich engagiert in der Entwicklung skalierbarer Lösungen und der Verbesserung von Kundenerlebnissen.",
+    "contactMe": "Kontaktieren",
+    "downloadCV": "Lebenslauf"
+  },
+  "about": {
+    "title": "Über mich",
+    "description": "Senior Software Engineer mit Expertise in .NET, React, Angular und Datenbanken. Erfahren in der Entwicklung von Customer Experience Management (CXM), Beratung, IoT und HR-Software. Nachgewiesene Fähigkeit zur Teamleitung, API-Design und Systemoptimierung. Leidenschaftlich im Lernen und Mentoring.",
+    "location": "Plovdiv, Bulgarien"
+  },
+  "experience": {
+    "title": "Berufserfahrung",
+    "remote": "Remote",
+    "onsite": "Vor Ort",
+    "companies": {
+      "boostCX": {
+        "role": "Senior Software Engineer (.NET)",
+        "description": "Entwicklung von CXM-Lösungen, Leitung des API-Moduldesigns, Führung eines 2-köpfigen Teams, Erfassung von Kundenanforderungen."
+      },
+      "infopulse": {
+        "role": "Software Engineer (.NET, Angular)",
+        "description": "Entwicklung von Lösungen für Big-Four-Unternehmen, Refactoring von Legacy-Code, Erstellung von Unit-Tests, Teilnahme an der Planung."
+      },
+      "oitl": {
+        "role": "Junior Software Engineer (.NET, React)",
+        "description": "Entwicklung von IoT-Anwendungen, Datenbankoptimierung, Konfiguration von CI/CD-Pipelines."
+      },
+      "keepSolid": {
+        "role": "Junior Software Engineer (.NET)",
+        "description": "Verbesserung der Produktqualität, Datenbankoptimierung, Abdeckung von Legacy-Code mit Unit-Tests."
+      }
+    }
+  },
+  "skills": {
+    "title": "Fähigkeiten & Technologien",
+    "categories": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "databases": "Datenbanken",
+      "devops": "DevOps & Tools",
+      "soft": "Soft Skills"
+    },
+    "soft": {
+      "flexibility": "Flexibilität",
+      "taskPrioritization": "Aufgabenpriorisierung",
+      "communication": "Kommunikation",
+      "teamwork": "Teamarbeit"
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "info": "Kontaktinformationen",
+    "form": {
+      "name": "Name",
+      "email": "E-Mail",
+      "message": "Nachricht",
+      "send": "Nachricht senden"
+    }
+  }
+}

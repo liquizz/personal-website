@@ -1,0 +1,69 @@
+{
+  "header": {
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "contact": "Contact",
+    "toggleTheme": "Toggle Theme"
+  },
+  "hero": {
+    "title": "Senior Software Engineer",
+    "description": "Specializing in backend, frontend, and database development with over 7 years of experience. Expert in .NET, React, Angular, MSSQL. Passionate about building scalable solutions and improving customer experiences.",
+    "contactMe": "Contact Me",
+    "downloadCV": "Download CV"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Senior Software Engineer with expertise in .NET, React, Angular, and databases. Experienced in Customer Experience Management (CXM), consulting, IoT, and HR software domains. Proven ability to lead teams, design APIs, and improve system performance. Passionate about learning and mentoring others.",
+    "location": "Plovdiv, Bulgaria"
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "remote": "Remote",
+    "onsite": "On-site",
+    "companies": {
+      "boostCX": {
+        "role": "Senior Software Engineer (.NET)",
+        "description": "Developed CXM solutions, led API module design, led team of 2, collected client requirements."
+      },
+      "infopulse": {
+        "role": "Middle Software Engineer (.NET, Angular)",
+        "description": "Built solutions for Big Four firm, refactored legacy code, wrote unit tests, participated in planning."
+      },
+      "oitl": {
+        "role": "Strong Junior Software Engineer (.NET, React)",
+        "description": "Developed IoT apps, optimized databases, configured CI/CD pipelines."
+      },
+      "keepSolid": {
+        "role": "Junior Software Engineer (.NET)",
+        "description": "Improved product quality, optimized databases, covered legacy code with unit tests."
+      }
+    }
+  },
+  "skills": {
+    "title": "Skills & Technologies",
+    "categories": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "databases": "Databases",
+      "devops": "DevOps & Tools",
+      "soft": "Soft Skills"
+    },
+    "soft": {
+      "flexibility": "Flexibility",
+      "taskPrioritization": "Task Prioritization",
+      "communication": "Communication",
+      "teamwork": "Teamwork"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "info": "Contact Information",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send Message"
+    }
+  }
+}

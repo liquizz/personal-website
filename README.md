@@ -2,6 +2,10 @@
 
 This repository contains the source code for my personal portfolio website built with modern web technologies. The site showcases my professional experience, skills, and contact information in a clean, responsive design with dark/light theme support.
 
+## 🌐 Hosted Website Link
+
+- [liquiz.dev](https://liquiz.dev/) 🌍
+
 ## 🌟 Features
 
 - **Responsive Design** - Optimized for all device sizes

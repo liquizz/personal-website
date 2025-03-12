@@ -59,6 +59,11 @@
   "contact": {
     "title": "Контакти",
     "info": "Информация за контакт",
+    "github": {
+      "profile": "GitHub Профил",
+      "repo": "Хранилище на този уебсайт"
+    },
+    "linkedin": "LinkedIn Профил",
     "form": {
       "name": "Име",
       "email": "Имейл",

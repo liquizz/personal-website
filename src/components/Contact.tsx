@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Linkedin, Send } from 'lucide-react';
+import { Mail, Linkedin, Send, Github } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export const Contact: React.FC = () => {
@@ -54,7 +54,25 @@ export const Contact: React.FC = () => {
                   className="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
                 >
                   <Linkedin size={20} />
-                  LinkedIn Profile
+                  {t('contact.linkedin')}
+                </a>
+                <a
+                  href="https://github.com/liquizz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+                >
+                  <Github size={20} />
+                  {t('contact.github.profile')}
+                </a>
+                <a
+                  href="https://github.com/liquizz/personal-website/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+                >
+                  <Github size={20} />
+                  {t('contact.github.repo')}
                 </a>
               </div>
             </div>

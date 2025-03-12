@@ -59,6 +59,11 @@
   "contact": {
     "title": "Get in Touch",
     "info": "Contact Information",
+    "github": {
+      "profile": "GitHub Profile",
+      "repo": "This Website's Repository"
+    },
+    "linkedin": "LinkedIn Profile",
     "form": {
       "name": "Name",
       "email": "Email",

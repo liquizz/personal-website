@@ -59,6 +59,11 @@
   "contact": {
     "title": "Зв'язатися",
     "info": "Контактна інформація",
+    "github": {
+      "profile": "Профіль GitHub",
+      "repo": "Репозиторій цього сайту"
+    },
+    "linkedin": "Профіль LinkedIn",
     "form": {
       "name": "Ім'я",
       "email": "Email",

@@ -7,4 +7,15 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+
+  resolve: {
+    alias: {
+      'react': 'react',
+      'react-dom': 'react-dom',
+    }
+  },
+  
+  esbuild: {
+    jsxInject: `import React from 'react'`,
+  }
 });

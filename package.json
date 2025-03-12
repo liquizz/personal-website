@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://liquizz.github.io/personal-website",
+  "homepage": "https://liquiz.dev/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

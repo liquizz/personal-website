@@ -6,7 +6,7 @@ import NET from 'vanta/dist/vanta.net.min';
 import * as THREE from 'three';
 
 export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const [vantaEffect, setVantaEffect] = useState<ReturnType<typeof NET> | null>(null);
   const vantaRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
 
@@ -94,7 +94,8 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="#"
+                href="/assets/files/VladyslavSheikoResume.pdf"
+                download="Vladyslav_Sheiko_CV.pdf"
                 className="flex items-center gap-2 px-6 py-3 bg-white/80 dark:bg-white/10 text-gray-900 dark:text-white rounded-lg hover:bg-white/90 dark:hover:bg-white/20 transition-colors backdrop-blur-sm shadow-lg border border-white/20"
               >
                 <Download size={20} />
@@ -111,7 +112,7 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
             <div className="relative w-64 h-64 md:w-96 md:h-96 mx-auto">
               <div className="absolute inset-0 rounded-full bg-gradient-to-b from-blue-500/30 to-purple-500/30 backdrop-blur-md" />
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+                src="/assets/images/image.jpg"
                 alt="Vladyslav Sheiko"
                 className="rounded-full w-full h-full object-cover shadow-2xl relative z-10"
               />

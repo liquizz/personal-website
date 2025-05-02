@@ -39,24 +39,24 @@ export const SEO: React.FC<SEOProps> = ({ lang }) => {
       <title>{seoData.title}</title>
       <meta name="description" content={seoData.description} />
       <meta name="keywords" content={seoData.keywords} />
-      
+
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:title" content={seoData.title} />
       <meta property="og:description" content={seoData.description} />
-      <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" />
-      
+      <meta property="og:image" content="/assets/images/og.png" />
+
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seoData.title} />
       <meta name="twitter:description" content={seoData.description} />
-      <meta name="twitter:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" />
+      <meta name="twitter:image" content="/assets/images/og.png" />
 
       {/* Additional SEO tags */}
       <meta name="robots" content="index, follow" />
       <meta name="author" content="Vladyslav Sheiko" />
       <link rel="canonical" href={window.location.href} />
-      
+
       {/* Structured Data */}
       <script type="application/ld+json">
         {JSON.stringify({
@@ -65,7 +65,7 @@ export const SEO: React.FC<SEOProps> = ({ lang }) => {
           "name": "Vladyslav Sheiko",
           "jobTitle": t('hero.title'),
           "description": seoData.description,
-          "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+          "image": "/assets/images/og.png",
           "url": window.location.href,
           "sameAs": [
             "https://www.linkedin.com/in/vladyslav-sheiko"

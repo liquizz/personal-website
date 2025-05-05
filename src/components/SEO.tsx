@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useTranslation } from 'react-i18next';
 
 interface SEOProps {
   lang: string;
@@ -30,10 +29,7 @@ const translations = {
 };
 
 export const SEO: React.FC<SEOProps> = ({ lang }) => {
-  const { t } = useTranslation();
   const seoData = translations[lang as keyof typeof translations] || translations.en;
-  const siteUrl = typeof window !== 'undefined' ? window.location.origin : '';
-  const imageUrl = `${siteUrl}/assets/images/og.png`;
 
   return (
     <Helmet>
@@ -44,18 +40,18 @@ export const SEO: React.FC<SEOProps> = ({ lang }) => {
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={seoData.title} />
-      <meta property="og:description" content={seoData.description} />
-      <meta property="og:image" content={imageUrl} />
+      <meta property="og:title" content="Vladyslav Sheiko - Senior Software Engineer" />
+      <meta property="og:description" content="Senior Software Engineer specializing in .NET, React, Angular, and database development with over 7 years of experience." />
+      <meta property="og:image" content="https://liquiz.dev/assets/images/og.png" />
       <meta property="og:url" content={typeof window !== 'undefined' ? window.location.href : ''} />
       <meta property="og:image:width" content="800" />
       <meta property="og:image:height" content="420" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={seoData.title} />
-      <meta name="twitter:description" content={seoData.description} />
-      <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:title" content="Vladyslav Sheiko - Senior Software Engineer" />
+      <meta name="twitter:description" content="Senior Software Engineer specializing in .NET, React, Angular, and database development with over 7 years of experience." />
+      <meta name="twitter:image" content="https://liquiz.dev/assets/images/og.png" />
 
       {/* LinkedIn (uses Open Graph) */}
       <meta property="og:site_name" content="Vladyslav Sheiko" />
@@ -71,9 +67,9 @@ export const SEO: React.FC<SEOProps> = ({ lang }) => {
           "@context": "https://schema.org",
           "@type": "Person",
           "name": "Vladyslav Sheiko",
-          "jobTitle": t('hero.title'),
-          "description": seoData.description,
-          "image": imageUrl,
+          "jobTitle": "Senior Software Engineer",
+          "description": "Senior Software Engineer specializing in .NET, React, Angular, and database development with over 7 years of experience.",
+          "image": "https://liquiz.dev/assets/images/og.png",
           "url": typeof window !== 'undefined' ? window.location.href : '',
           "sameAs": [
             "https://www.linkedin.com/in/vladyslav-sheiko"

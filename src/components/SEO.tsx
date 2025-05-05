@@ -32,6 +32,8 @@ const translations = {
 export const SEO: React.FC<SEOProps> = ({ lang }) => {
   const { t } = useTranslation();
   const seoData = translations[lang as keyof typeof translations] || translations.en;
+  const siteUrl = typeof window !== 'undefined' ? window.location.origin : '';
+  const imageUrl = `${siteUrl}/assets/images/og.png`;
 
   return (
     <Helmet>
@@ -44,18 +46,24 @@ export const SEO: React.FC<SEOProps> = ({ lang }) => {
       <meta property="og:type" content="website" />
       <meta property="og:title" content={seoData.title} />
       <meta property="og:description" content={seoData.description} />
-      <meta property="og:image" content="/assets/images/og.png" />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:url" content={typeof window !== 'undefined' ? window.location.href : ''} />
+      <meta property="og:image:width" content="800" />
+      <meta property="og:image:height" content="420" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seoData.title} />
       <meta name="twitter:description" content={seoData.description} />
-      <meta name="twitter:image" content="/assets/images/og.png" />
+      <meta name="twitter:image" content={imageUrl} />
+
+      {/* LinkedIn (uses Open Graph) */}
+      <meta property="og:site_name" content="Vladyslav Sheiko" />
 
       {/* Additional SEO tags */}
       <meta name="robots" content="index, follow" />
       <meta name="author" content="Vladyslav Sheiko" />
-      <link rel="canonical" href={window.location.href} />
+      <link rel="canonical" href={typeof window !== 'undefined' ? window.location.href : ''} />
 
       {/* Structured Data */}
       <script type="application/ld+json">
@@ -65,8 +73,8 @@ export const SEO: React.FC<SEOProps> = ({ lang }) => {
           "name": "Vladyslav Sheiko",
           "jobTitle": t('hero.title'),
           "description": seoData.description,
-          "image": "/assets/images/og.png",
-          "url": window.location.href,
+          "image": imageUrl,
+          "url": typeof window !== 'undefined' ? window.location.href : '',
           "sameAs": [
             "https://www.linkedin.com/in/vladyslav-sheiko"
           ],

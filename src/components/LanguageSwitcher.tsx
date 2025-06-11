@@ -11,7 +11,8 @@ const languages = [
   { code: 'en', name: 'English' },
   { code: 'de', name: 'Deutsch' },
   { code: 'ua', name: 'Українська' },
-  { code: 'bg', name: 'Български' }
+  { code: 'bg', name: 'Български' },
+  { code: 'ro', name: 'Română' }
 ];
 
 export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isScrolled }) => {

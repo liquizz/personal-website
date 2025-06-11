@@ -5,6 +5,7 @@ import en from './locales/en.json';
 import ua from './locales/ua.json';
 import bg from './locales/bg.json';
 import de from './locales/de.json';
+import ro from './locales/ro.json';
 
 i18n
   .use(LanguageDetector)
@@ -22,6 +23,9 @@ i18n
       },
       de: {
         translation: de
+      },
+      ro: {
+        translation: ro
       }
     },
     fallbackLng: 'en',

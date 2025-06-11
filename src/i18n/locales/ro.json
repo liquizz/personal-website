@@ -1,0 +1,74 @@
+{
+    "header": {
+        "about": "Despre",
+        "experience": "Experiență",
+        "skills": "Competențe",
+        "contact": "Contact",
+        "toggleTheme": "Comutează Tema"
+    },
+    "hero": {
+        "title": "Inginer Software Senior",
+        "description": "Specializat în dezvoltarea backend, frontend și baze de date cu peste 7 ani de experiență. Expert în .NET, React, Angular, MSSQL. Pasionat de construirea de soluții scalabile și îmbunătățirea experienței clienților.",
+        "contactMe": "Contactați-mă",
+        "downloadCV": "Descărcați CV"
+    },
+    "about": {
+        "title": "Despre mine",
+        "description": "Inginer software senior cu expertiză în .NET, React, Angular și baze de date. Experimentat în domeniul Managementului Experienței Clienților (CXM), consultanță, IoT și software HR. Abilitate dovedită de a conduce echipe, proiecta API-uri și îmbunătăți performanța sistemelor. Pasionat de învățare și mentorare.",
+        "location": "București, România"
+    },
+    "experience": {
+        "title": "Experiența Profesională",
+        "remote": "La distanță",
+        "onsite": "La birou",
+        "companies": {
+            "boostCX": {
+                "role": "Inginer Software Senior (.NET)",
+                "description": "Am dezvoltat soluții CXM, am condus designul modulelor API, am condus o echipă de 2 persoane, am colectat cerințele clienților."
+            },
+            "infopulse": {
+                "role": "Inginer Software Mediu (.NET, Angular)",
+                "description": "Am construit soluții pentru firma Big Four, am refactorizat codul legacy, am scris teste unitare, am participat la planificare."
+            },
+            "oitl": {
+                "role": "Inginer Software Junior Avansat (.NET, React)",
+                "description": "Am dezvoltat aplicații IoT, am optimizat bazele de date, am configurat pipeline-uri CI/CD."
+            },
+            "keepSolid": {
+                "role": "Inginer Software Junior (.NET)",
+                "description": "Am îmbunătățit calitatea produsului, am optimizat bazele de date, am acoperit codul legacy cu teste unitare."
+            }
+        }
+    },
+    "skills": {
+        "title": "Competențe & Tehnologii",
+        "categories": {
+            "backend": "Backend",
+            "frontend": "Frontend",
+            "databases": "Baze de date",
+            "devops": "DevOps & Instrumente",
+            "soft": "Competențe Soft"
+        },
+        "soft": {
+            "flexibility": "Flexibilitate",
+            "taskPrioritization": "Prioritizarea Sarcinilor",
+            "communication": "Comunicare",
+            "teamwork": "Lucru în echipă"
+        }
+    },
+    "contact": {
+        "title": "Contactați-mă",
+        "info": "Informații de contact",
+        "github": {
+            "profile": "Profil GitHub",
+            "repo": "Repository-ul acestui site web"
+        },
+        "linkedin": "Profil LinkedIn",
+        "form": {
+            "name": "Nume",
+            "email": "Email",
+            "message": "Mesaj",
+            "send": "Trimite Mesajul"
+        }
+    }
+}

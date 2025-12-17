@@ -20,8 +20,13 @@
   "experience": {
     "title": "Berufserfahrung",
     "remote": "Remote",
+    "hybrid": "Hybrid",
     "onsite": "Vor Ort",
     "companies": {
+      "edenred": {
+        "role": "Senior Automation Engineer (SDET, .NET)",
+        "description": "Entwicklung und Wartung von automatisierten Test-Frameworks, Zusammenarbeit mit funktionsübergreifenden Teams zur Sicherstellung der Softwarequalität und zur Verbesserung der Testabdeckung für Unternehmensanwendungen."
+      },
       "boostCX": {
         "role": "Senior Software Engineer (.NET)",
         "description": "Entwicklung von CXM-Lösungen, Leitung des API-Moduldesigns, Führung eines 2-köpfigen Teams, Erfassung von Kundenanforderungen."

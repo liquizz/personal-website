@@ -6,6 +6,12 @@ import { useTranslation } from 'react-i18next';
 
 const experiences = [
   {
+    company: 'Edenred',
+    period: '09/2025 - Present',
+    type: 'hybrid',
+    key: 'edenred'
+  },
+  {
     company: 'boostCX',
     period: '05/2023 - 03/2025',
     type: 'remote',

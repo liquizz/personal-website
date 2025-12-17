@@ -20,8 +20,13 @@
     "experience": {
         "title": "Experiența Profesională",
         "remote": "La distanță",
+        "hybrid": "Hibrid",
         "onsite": "La birou",
         "companies": {
+            "edenred": {
+                "role": "Inginer Senior de Automatizare (SDET, .NET)",
+                "description": "Dezvoltarea și întreținerea framework-urilor de teste automatizate, colaborarea cu echipe multidisciplinare pentru a asigura calitatea software-ului și a îmbunătăți acoperirea testelor pentru aplicații de întreprindere."
+            },
             "boostCX": {
                 "role": "Inginer Software Senior (.NET)",
                 "description": "Am dezvoltat soluții CXM, am condus designul modulelor API, am condus o echipă de 2 persoane, am colectat cerințele clienților."

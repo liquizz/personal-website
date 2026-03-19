@@ -78,7 +78,7 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
             <div className="relative w-64 h-64 md:w-96 md:h-96 mx-auto">
               <div className="absolute inset-0 rounded-full bg-gradient-to-b from-blue-500/30 to-purple-500/30 backdrop-blur-md" />
               <img
-                src="/assets/images/image.jpg"
+                src="https://avatars.githubusercontent.com/u/45404995"
                 alt="Vladyslav Sheiko"
                 className="rounded-full w-full h-full object-cover shadow-2xl relative z-10"
               />

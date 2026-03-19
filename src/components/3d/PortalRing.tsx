@@ -4,7 +4,11 @@ import { Float } from "@react-three/drei";
 import * as THREE from "three";
 import { makePortalTexture, type PortalTextureResult } from "../../utils/portalUtils";
 
-export function PortalRing() {
+interface PortalRingProps {
+  isDark?: boolean;
+}
+
+export function PortalRing({ isDark = true }: PortalRingProps) {
   const portalRef = useRef<PortalTextureResult | null>(null);
   const coreRef = useRef<THREE.Mesh>(null);
   const lastTextureUpdate = useRef(0);
@@ -42,9 +46,9 @@ export function PortalRing() {
       <mesh position={[0, 0.45, 0]}>
         <torusGeometry args={[2.2, 0.06, 32, 220]} />
         <meshStandardMaterial
-          color="#86d9ff"
-          emissive="#4b8dff"
-          emissiveIntensity={2.2}
+          color={isDark ? "#86d9ff" : "#4a90e2"}
+          emissive={isDark ? "#4b8dff" : "#2171b5"}
+          emissiveIntensity={isDark ? 2.2 : 0.8}
           metalness={0.45}
           roughness={0.18}
         />
@@ -54,7 +58,7 @@ export function PortalRing() {
         <circleGeometry args={[1.8, 96]} />
         <meshBasicMaterial
           transparent
-          opacity={0.95}
+          opacity={isDark ? 0.95 : 0.85}
           depthWrite={false}
           blending={THREE.AdditiveBlending}
         />
@@ -74,9 +78,9 @@ export function PortalRing() {
             <mesh position={[x, 0.45, z]} rotation={[0, -a, 0]}>
               <boxGeometry args={[0.08, 1.2 + (i % 4) * 0.25, 0.08]} />
               <meshStandardMaterial
-                color="#2e5dff"
-                emissive="#2e5dff"
-                emissiveIntensity={1.7}
+                color={isDark ? "#2e5dff" : "#3b82f6"}
+                emissive={isDark ? "#2e5dff" : "#2563eb"}
+                emissiveIntensity={isDark ? 1.7 : 0.5}
                 metalness={0.25}
                 roughness={0.15}
               />

@@ -3,7 +3,11 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { makeDustGeometry } from "../../utils/portalUtils";
 
-export function Dust() {
+interface DustProps {
+  isDark?: boolean;
+}
+
+export function Dust({ isDark = true }: DustProps) {
   const ref = useRef<THREE.Points>(null);
   const geoRef = useRef<THREE.BufferGeometry | null>(null);
   const n = 3200;
@@ -28,7 +32,7 @@ export function Dust() {
         size={0.045}
         sizeAttenuation
         transparent
-        opacity={0.8}
+        opacity={isDark ? 0.8 : 0.5}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
         vertexColors

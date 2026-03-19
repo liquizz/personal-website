@@ -2,7 +2,11 @@ import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-export function MonolithField() {
+interface MonolithFieldProps {
+  isDark?: boolean;
+}
+
+export function MonolithField({ isDark = true }: MonolithFieldProps) {
   const g = useRef<THREE.Group>(null);
   const items = useMemo(() => {
     const list: Array<{
@@ -37,9 +41,25 @@ export function MonolithField() {
         <mesh key={i} position={it.pos} rotation={it.rot} castShadow>
           <boxGeometry args={[it.w, it.h, it.w]} />
           <meshStandardMaterial
-            color={i % 2 === 0 ? "#0b1430" : "#101a40"}
-            emissive={i % 3 === 0 ? "#1f5eff" : "#0a1535"}
-            emissiveIntensity={i % 3 === 0 ? 1.2 : 0.2}
+            color={
+              isDark
+                ? i % 2 === 0
+                  ? "#0b1430"
+                  : "#101a40"
+                : i % 2 === 0
+                  ? "#e2e8f0"
+                  : "#cbd5e1"
+            }
+            emissive={
+              isDark
+                ? i % 3 === 0
+                  ? "#1f5eff"
+                  : "#0a1535"
+                : i % 3 === 0
+                  ? "#3b82f6"
+                  : "#94a3b8"
+            }
+            emissiveIntensity={isDark ? (i % 3 === 0 ? 1.2 : 0.2) : 0.3}
             metalness={0.65}
             roughness={0.22}
           />

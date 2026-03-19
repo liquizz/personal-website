@@ -11,6 +11,7 @@ import {
   Vignette,
 } from "@react-three/postprocessing";
 import { SceneRig } from "./SceneRig";
+import * as THREE from "three";
 
 interface PortalSceneProps {
   isDark?: boolean;
@@ -55,7 +56,7 @@ export function PortalScene({ isDark = true }: PortalSceneProps) {
           color="#9de8ff"
         />
 
-        <SceneRig />
+        <SceneRig isDark={isDark} />
         <Environment preset={isDark ? "night" : "city"} />
         <OrbitControls
           enablePan={false}
@@ -71,7 +72,11 @@ export function PortalScene({ isDark = true }: PortalSceneProps) {
             luminanceSmoothing={0.85}
             mipmapBlur
           />
-          <ChromaticAberration offset={[0.0008, 0.0012]} />
+          <ChromaticAberration
+            offset={new THREE.Vector2(0.0008, 0.0012)}
+            modulationOffset={0}
+            radialModulation={false}
+          />
           <Vignette eskil={false} offset={0.16} darkness={vignetteDarkness} />
         </EffectComposer>
       </Canvas>

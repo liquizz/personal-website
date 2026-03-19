@@ -2,7 +2,11 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { makeGridTexture } from "../../utils/portalUtils";
 
-export function FloorGrid() {
+interface FloorGridProps {
+  isDark?: boolean;
+}
+
+export function FloorGrid({ isDark = true }: FloorGridProps) {
   const texRef = useRef<THREE.CanvasTexture | null>(null);
   const meshRef = useRef<THREE.Mesh>(null);
 
@@ -28,9 +32,9 @@ export function FloorGrid() {
     >
       <planeGeometry args={[40, 40]} />
       <meshStandardMaterial
-        color="#0a1228"
-        emissive="#14306d"
-        emissiveIntensity={0.35}
+        color={isDark ? "#0a1228" : "#f1f5f9"}
+        emissive={isDark ? "#14306d" : "#cbd5e1"}
+        emissiveIntensity={isDark ? 0.35 : 0.1}
         metalness={0.12}
         roughness={0.8}
       />

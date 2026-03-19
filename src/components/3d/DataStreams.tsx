@@ -21,7 +21,11 @@ const STREAM_PTS: StreamPt[] = Array.from({ length: STREAM_COUNT }, (_, i) => ({
   o: seededNoise(i * 3.17 + 0.5) * Math.PI * 2,
 }));
 
-export function DataStreams() {
+interface DataStreamsProps {
+  isDark?: boolean;
+}
+
+export function DataStreams({ isDark = true }: DataStreamsProps) {
   const ref = useRef<THREE.InstancedMesh>(null);
   const dummy = useRef(new THREE.Object3D());
 
@@ -49,7 +53,11 @@ export function DataStreams() {
   return (
     <instancedMesh ref={ref} args={[undefined, undefined, STREAM_COUNT]}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshBasicMaterial color="#9be8ff" transparent opacity={0.85} />
+      <meshBasicMaterial
+        color={isDark ? "#9be8ff" : "#60a5fa"}
+        transparent
+        opacity={isDark ? 0.85 : 0.6}
+      />
     </instancedMesh>
   );
 }

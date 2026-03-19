@@ -7,7 +7,11 @@ import { DataStreams } from "./DataStreams";
 import { Dust } from "./Dust";
 import { FloorGrid } from "./FloorGrid";
 
-export function SceneRig() {
+interface SceneRigProps {
+  isDark?: boolean;
+}
+
+export function SceneRig({ isDark = true }: SceneRigProps) {
   const g = useRef<THREE.Group>(null);
 
   useFrame((state, dt) => {
@@ -26,11 +30,11 @@ export function SceneRig() {
 
   return (
     <group ref={g}>
-      <PortalRing />
-      <MonolithField />
-      <DataStreams />
-      <Dust />
-      <FloorGrid />
+      <PortalRing isDark={isDark} />
+      <MonolithField isDark={isDark} />
+      <DataStreams isDark={isDark} />
+      <Dust isDark={isDark} />
+      <FloorGrid isDark={isDark} />
     </group>
   );
 }

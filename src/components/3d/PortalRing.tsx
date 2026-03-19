@@ -3,15 +3,22 @@ import { useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
 import { makePortalTexture, type PortalTextureResult } from "../../utils/portalUtils";
+import type { DeviceCapabilities } from "../../utils/deviceDetection";
 
 interface PortalRingProps {
   isDark?: boolean;
+  deviceCapabilities?: DeviceCapabilities;
 }
 
-export function PortalRing({ isDark = true }: PortalRingProps) {
+export function PortalRing({ isDark = true, deviceCapabilities }: PortalRingProps) {
   const portalRef = useRef<PortalTextureResult | null>(null);
   const coreRef = useRef<THREE.Mesh>(null);
   const lastTextureUpdate = useRef(0);
+
+  const geometryQuality = deviceCapabilities?.geometryQuality ?? 1;
+  const torusSegments = Math.floor(220 * geometryQuality);
+  const circleSegments = Math.floor(96 * geometryQuality);
+  const ringBoxCount = Math.floor(12 * geometryQuality);
 
   useEffect(() => {
     portalRef.current = makePortalTexture(512);
@@ -44,7 +51,7 @@ export function PortalRing({ isDark = true }: PortalRingProps) {
   return (
     <group>
       <mesh position={[0, 0.45, 0]}>
-        <torusGeometry args={[2.2, 0.06, 32, 220]} />
+        <torusGeometry args={[2.2, 0.06, 32, torusSegments]} />
         <meshStandardMaterial
           color={isDark ? "#86d9ff" : "#4a90e2"}
           emissive={isDark ? "#4b8dff" : "#2171b5"}
@@ -55,7 +62,7 @@ export function PortalRing({ isDark = true }: PortalRingProps) {
       </mesh>
 
       <mesh ref={coreRef} position={[0, 0.45, 0.01]}>
-        <circleGeometry args={[1.8, 96]} />
+        <circleGeometry args={[1.8, circleSegments]} />
         <meshBasicMaterial
           transparent
           opacity={isDark ? 0.95 : 0.85}
@@ -64,8 +71,8 @@ export function PortalRing({ isDark = true }: PortalRingProps) {
         />
       </mesh>
 
-      {Array.from({ length: 12 }).map((_, i) => {
-        const a = (i / 12) * Math.PI * 2;
+      {Array.from({ length: ringBoxCount }).map((_, i) => {
+        const a = (i / ringBoxCount) * Math.PI * 2;
         const x = Math.cos(a) * 2.2;
         const z = Math.sin(a) * 2.2;
         return (

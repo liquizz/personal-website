@@ -12,12 +12,14 @@ import {
 } from "@react-three/postprocessing";
 import { SceneRig } from "./SceneRig";
 import * as THREE from "three";
+import { useDevicePerformance } from "../../hooks/useDevicePerformance";
 
 interface PortalSceneProps {
   isDark?: boolean;
 }
 
 export function PortalScene({ isDark = true }: PortalSceneProps) {
+  const deviceCapabilities = useDevicePerformance();
   const bgColor = isDark ? "#02050d" : "#f0f4f8";
   const fogColor = isDark ? "#02050d" : "#f0f4f8";
   const ambientIntensity = isDark ? 0.2 : 0.8;
@@ -56,7 +58,7 @@ export function PortalScene({ isDark = true }: PortalSceneProps) {
           color="#9de8ff"
         />
 
-        <SceneRig isDark={isDark} />
+        <SceneRig isDark={isDark} deviceCapabilities={deviceCapabilities} />
         <Environment preset={isDark ? "night" : "city"} />
         <OrbitControls
           enablePan={false}
@@ -65,20 +67,22 @@ export function PortalScene({ isDark = true }: PortalSceneProps) {
           minPolarAngle={Math.PI * 0.35}
         />
 
-        <EffectComposer>
-          <Bloom
-            intensity={bloomIntensity}
-            luminanceThreshold={0.12}
-            luminanceSmoothing={0.85}
-            mipmapBlur
-          />
-          <ChromaticAberration
-            offset={new THREE.Vector2(0.0008, 0.0012)}
-            modulationOffset={0}
-            radialModulation={false}
-          />
-          <Vignette eskil={false} offset={0.16} darkness={vignetteDarkness} />
-        </EffectComposer>
+        {deviceCapabilities.enablePostProcessing && (
+          <EffectComposer>
+            <Bloom
+              intensity={bloomIntensity}
+              luminanceThreshold={0.12}
+              luminanceSmoothing={0.85}
+              mipmapBlur
+            />
+            <ChromaticAberration
+              offset={new THREE.Vector2(0.0008, 0.0012)}
+              modulationOffset={0}
+              radialModulation={false}
+            />
+            <Vignette eskil={false} offset={0.16} darkness={vignetteDarkness} />
+          </EffectComposer>
+        )}
       </Canvas>
 
       <div

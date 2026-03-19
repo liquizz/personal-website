@@ -2,8 +2,9 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { seededNoise } from "../../utils/portalUtils";
+import type { DeviceCapabilities } from "../../utils/deviceDetection";
 
-const STREAM_COUNT = 120;
+const BASE_STREAM_COUNT = 120;
 
 type StreamPt = {
   r: number;
@@ -13,7 +14,7 @@ type StreamPt = {
   o: number;
 };
 
-const STREAM_PTS: StreamPt[] = Array.from({ length: STREAM_COUNT }, (_, i) => ({
+const STREAM_PTS: StreamPt[] = Array.from({ length: BASE_STREAM_COUNT }, (_, i) => ({
   r: 1.3 + seededNoise(i * 1.11 + 0.1) * 6.5,
   a: seededNoise(i * 1.73 + 0.2) * Math.PI * 2,
   y: -1 + seededNoise(i * 2.03 + 0.3) * 3.5,
@@ -23,11 +24,13 @@ const STREAM_PTS: StreamPt[] = Array.from({ length: STREAM_COUNT }, (_, i) => ({
 
 interface DataStreamsProps {
   isDark?: boolean;
+  deviceCapabilities?: DeviceCapabilities;
 }
 
-export function DataStreams({ isDark = true }: DataStreamsProps) {
+export function DataStreams({ isDark = true, deviceCapabilities }: DataStreamsProps) {
   const ref = useRef<THREE.InstancedMesh>(null);
   const dummy = useRef(new THREE.Object3D());
+  const streamCount = Math.floor(BASE_STREAM_COUNT * (deviceCapabilities?.particleCountMultiplier ?? 1));
 
   useFrame((state) => {
     const mesh = ref.current;
@@ -51,7 +54,7 @@ export function DataStreams({ isDark = true }: DataStreamsProps) {
   });
 
   return (
-    <instancedMesh ref={ref} args={[undefined, undefined, STREAM_COUNT]}>
+    <instancedMesh ref={ref} args={[undefined, undefined, streamCount]}>
       <boxGeometry args={[1, 1, 1]} />
       <meshBasicMaterial
         color={isDark ? "#9be8ff" : "#60a5fa"}

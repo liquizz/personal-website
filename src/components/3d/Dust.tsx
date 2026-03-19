@@ -2,15 +2,18 @@ import { useEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { makeDustGeometry } from "../../utils/portalUtils";
+import type { DeviceCapabilities } from "../../utils/deviceDetection";
 
 interface DustProps {
   isDark?: boolean;
+  deviceCapabilities?: DeviceCapabilities;
 }
 
-export function Dust({ isDark = true }: DustProps) {
+export function Dust({ isDark = true, deviceCapabilities }: DustProps) {
   const ref = useRef<THREE.Points>(null);
   const geoRef = useRef<THREE.BufferGeometry | null>(null);
-  const n = 3200;
+  const baseCount = 3200;
+  const n = Math.floor(baseCount * (deviceCapabilities?.particleCountMultiplier ?? 1));
 
   useEffect(() => {
     geoRef.current = makeDustGeometry(n);

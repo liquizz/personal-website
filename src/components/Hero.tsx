@@ -1,114 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Mail, Linkedin, Download } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import NET from 'vanta/dist/vanta.net.min';
-import * as THREE from 'three';
+import { PortalScene } from './3d/PortalScene';
 
 export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
-  const [vantaEffect, setVantaEffect] = useState<ReturnType<typeof NET> | null>(null);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const vantaRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
-  
-  const prevThemeRef = useRef(isDark);
-  
-  const createVantaEffect = (element: HTMLDivElement) => {
-    return NET({
-      el: element,
-      THREE,
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: isDark ? 0x3366ff : 0xffffff,
-      backgroundColor: isDark ? 0x111827 : 0xaaacc0,
-      points: 10.00,
-      maxDistance: 18.00,
-      spacing: 15.00,
-      showDots: true,
-      // highlights: isDark ? 0x3366ff : 0x0066ff
-    });
-  };
-
-  useEffect(() => {
-    // Skip first render or when theme hasn't changed
-    if (prevThemeRef.current === isDark) {
-      prevThemeRef.current = isDark;
-      return;
-    }
-
-    const transitionVantaEffect = async () => {
-      setIsTransitioning(true);
-      
-      // Wait for fade out animation
-      await new Promise(resolve => setTimeout(resolve, 300));
-      
-      // Clean up existing effect
-      if (vantaEffect) {
-        vantaEffect.destroy();
-        setVantaEffect(null);
-      }
-      
-      // Create new effect with updated theme
-      if (vantaRef.current) {
-        const newEffect = createVantaEffect(vantaRef.current);
-        setVantaEffect(newEffect);
-      }
-      
-      // Small delay to ensure new effect is visible before fade in
-      await new Promise(resolve => setTimeout(resolve, 100));
-      
-      // End transition - fade in
-      setIsTransitioning(false);
-      
-      // Update previous theme ref
-      prevThemeRef.current = isDark;
-    };
-
-    transitionVantaEffect();
-  }, [isDark]);
-
-  // Initial setup effect
-  useEffect(() => {
-    if (!vantaEffect && vantaRef.current) {
-      const effect = createVantaEffect(vantaRef.current);
-      setVantaEffect(effect);
-      prevThemeRef.current = isDark;
-    }
-
-    return () => {
-      if (vantaEffect) {
-        vantaEffect.destroy();
-      }
-    };
-  }, []);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-16">
-      <div ref={vantaRef} className="absolute inset-0 z-0"></div>
-      
-      {/* Transition overlay - between vanta and content */}
-      <AnimatePresence>
-        {isTransitioning && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute inset-0 z-10"
-            style={{
-              backgroundColor: isDark ? '#111827' : '#f8fafc',  // Match the updated background color
-            }}
-          />
-        )}
-      </AnimatePresence>
-      
+      <PortalScene isDark={isDark} />
+
       {/* Gradient overlay for better text contrast */}
-      <div className="absolute inset-0 z-20 bg-gradient-to-b from-transparent via-black/5 to-black/20 dark:from-transparent dark:via-white/5 dark:to-white/20" />
+      <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent via-black/5 to-black/20 dark:from-transparent dark:via-white/5 dark:to-white/20" />
       
       {/* Content - always on top */}
       <div className="container mx-auto px-6 relative z-30">

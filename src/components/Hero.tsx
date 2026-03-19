@@ -12,7 +12,7 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
       <PortalScene isDark={isDark} />
 
       {/* Gradient overlay for better text contrast */}
-      <div className="absolute inset-0 z-20 bg-gradient-to-b from-transparent via-black/5 to-black/20 dark:from-transparent dark:via-white/5 dark:to-white/20" />
+      <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent via-black/5 to-black/20 dark:from-transparent dark:via-white/5 dark:to-white/20" />
       
       {/* Content - always on top */}
       <div className="container mx-auto px-6 relative z-30">

@@ -35,7 +35,6 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isScrolled }
 
   const changeLanguage = (langCode: string) => {
     i18n.changeLanguage(langCode);
-    document.documentElement.lang = langCode;
     setIsOpen(false);
   };
 

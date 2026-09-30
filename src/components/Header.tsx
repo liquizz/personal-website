@@ -85,6 +85,7 @@ export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
             <LanguageSwitcher isScrolled={isScrolled} />
             <button
               onClick={toggleTheme}
+              aria-label={t('header.toggleTheme')}
               className={`p-2 rounded-full transition-all duration-300 ${
                 isScrolled
                   ? 'bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50'
@@ -100,6 +101,8 @@ export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
             <LanguageSwitcher isScrolled={isScrolled} />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Menu"
+              aria-expanded={isMenuOpen}
               className={`p-2 rounded-lg transition-colors duration-300 ${
                 isScrolled
                   ? 'bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50'

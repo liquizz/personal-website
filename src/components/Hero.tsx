@@ -1,4 +1,4 @@
-import React, { Component, Suspense, lazy, type ReactNode } from 'react';
+import React, { Component, Suspense, lazy, useEffect, useState, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Download } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -23,16 +23,50 @@ class SceneErrorBoundary extends Component<{ children: ReactNode }, { failed: bo
   }
 }
 
+// Mount the scene only once the page has loaded and the main thread is idle, so
+// parsing/compiling the three.js chunk doesn't compete with first paint and input.
+function useIdleAfterLoad(): boolean {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    let idleId: number | undefined;
+    let timeoutId: number | undefined;
+
+    const schedule = () => {
+      if (typeof window.requestIdleCallback === 'function') {
+        idleId = window.requestIdleCallback(() => setReady(true), { timeout: 2000 });
+      } else {
+        timeoutId = window.setTimeout(() => setReady(true), 200);
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      schedule();
+    } else {
+      window.addEventListener('load', schedule, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener('load', schedule);
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+    };
+  }, []);
+
+  return ready;
+}
+
 export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
   const { t } = useTranslation();
   const { ref, inView } = useInView({ initialInView: true });
+  const showScene = useIdleAfterLoad();
 
   return (
     <section ref={ref} id="hero" className="relative min-h-screen flex items-center pt-16">
       <div className={`absolute inset-0 z-0 ${isDark ? 'bg-[#02050d]' : 'bg-[#f0f4f8]'}`} />
       <SceneErrorBoundary>
         <Suspense fallback={null}>
-          <PortalScene isDark={isDark} active={inView} />
+          {showScene && <PortalScene isDark={isDark} active={inView} />}
         </Suspense>
       </SceneErrorBoundary>
 
@@ -103,7 +137,9 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
             <div className="relative w-64 h-64 md:w-96 md:h-96 mx-auto">
               <div className="absolute inset-0 rounded-full bg-gradient-to-b from-blue-500/30 to-purple-500/30 backdrop-blur-md" />
               <img
-                src="https://avatars.githubusercontent.com/u/45404995"
+                src="/assets/images/avatar-460.webp"
+                srcSet="/assets/images/avatar-256.webp 256w, /assets/images/avatar-460.webp 460w"
+                sizes="(min-width: 768px) 384px, 256px"
                 alt="Vladyslav Sheiko"
                 width={384}
                 height={384}

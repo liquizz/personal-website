@@ -7,14 +7,14 @@
     "toggleTheme": "Toggle Theme"
   },
   "hero": {
-    "title": "Senior Software Engineer",
-    "description": "Specializing in backend, frontend, and database development with over 7 years of experience. Expert in .NET, React, Angular, MSSQL. Passionate about building scalable solutions and improving customer experiences.",
+    "title": "Senior Full-Stack .NET Engineer",
+    "description": "Specializing in back-end, front-end, and database development with over 7 years of experience. Expert in .NET, React, Angular, and MSSQL. Passionate about building scalable, maintainable solutions for distributed platforms.",
     "contactMe": "Contact Me",
     "downloadCV": "Download CV"
   },
   "about": {
     "title": "About Me",
-    "description": "Senior Software Engineer with expertise in .NET, React, Angular, and databases. Experienced in Customer Experience Management (CXM), consulting, IoT, and HR software domains. Proven ability to lead teams, design APIs, and improve system performance. Passionate about learning and mentoring others.",
+    "description": "Senior Full-Stack .NET Engineer with expertise in .NET, React, Angular, and databases. Experienced across Fintech, Customer Experience Management (CXM), consulting, IoT, and HR software domains. Thrived in both large teams (30+ members) and small agile groups (5–10 members). Proven ability to lead teams, design APIs, and improve system performance. Passionate about learning and mentoring others.",
     "location": "Bucharest, Romania"
   },
   "experience": {
@@ -24,24 +24,24 @@
     "onsite": "On-site",
     "companies": {
       "edenred": {
-        "role": "Senior Automation Engineer (SDET, .NET)",
-        "description": "Developing and maintaining automated test frameworks, collaborating with cross-functional teams to ensure software quality, and enhancing test coverage for enterprise applications."
+        "role": "Senior Software Engineer (.NET)",
+        "description": "Building features within a .NET 10 microservices architecture for a fintech platform, integrating third-party oil & gas providers through resilient APIs and data pipelines, translating business requirements into technical specs, and championing clean code, testing, and CI/CD."
       },
       "boostCX": {
-        "role": "Senior Software Engineer (.NET)",
-        "description": "Developed CXM solutions, led API module design, led team of 2, collected client requirements."
+        "role": "Senior Full-Stack Software Engineer (.NET, React)",
+        "description": "Developed a CXM platform for the automotive, banking, insurance, and power industries, engineered a CX survey suggestion system, led a team of 2 .NET developers, and designed API modules."
       },
       "infopulse": {
-        "role": "Middle Software Engineer (.NET, Angular)",
-        "description": "Built solutions for Big Four firm, refactored legacy code, wrote unit tests, participated in planning."
+        "role": "Middle Full-Stack Software Engineer (.NET, Angular)",
+        "description": "Built solutions for a Big Four accounting firm, refactored legacy .NET Core code, wrote unit tests with xUnit and Moq, performed code and design reviews, participated in planning."
       },
       "oitl": {
         "role": "Strong Junior Software Engineer (.NET, React)",
-        "description": "Developed IoT apps, optimized databases, configured CI/CD pipelines."
+        "description": "Developed IoT web apps with .NET Core, Entity Framework, and React, optimized SQL Server databases, configured CI/CD pipelines in TeamCity and Octopus Deploy."
       },
       "keepSolid": {
-        "role": "Junior Software Engineer (.NET)",
-        "description": "Improved product quality, optimized databases, covered legacy code with unit tests."
+        "role": "Junior Software Engineer (.NET, React)",
+        "description": "Reduced stabilization bugs to zero in 2 critical features, optimized MySQL databases, covered legacy code with unit tests."
       }
     }
   },
@@ -56,9 +56,11 @@
     },
     "soft": {
       "flexibility": "Flexibility",
+      "precision": "Precision & Thoroughness",
       "taskPrioritization": "Task Prioritization",
-      "communication": "Communication",
-      "teamwork": "Teamwork"
+      "issueResolution": "Issue Resolution",
+      "teamwork": "Teamwork",
+      "communication": "Communication"
     }
   },
   "contact": {

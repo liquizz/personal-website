@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import {
   Environment,
+  Lightformer,
   OrbitControls,
   PerspectiveCamera,
 } from "@react-three/drei";
@@ -14,12 +15,19 @@ import { SceneRig } from "./SceneRig";
 import * as THREE from "three";
 import { useDevicePerformance } from "../../hooks/useDevicePerformance";
 
+const CHROMATIC_OFFSET = new THREE.Vector2(0.0008, 0.0012);
+
 interface PortalSceneProps {
   isDark?: boolean;
+  /** When false the render loop is paused (e.g. the hero is scrolled out of view). */
+  active?: boolean;
 }
 
-export function PortalScene({ isDark = true }: PortalSceneProps) {
+export function PortalScene({ isDark = true, active = true }: PortalSceneProps) {
   const deviceCapabilities = useDevicePerformance();
+  const reducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const bgColor = isDark ? "#02050d" : "#f0f4f8";
   const fogColor = isDark ? "#02050d" : "#f0f4f8";
   const ambientIntensity = isDark ? 0.2 : 0.8;
@@ -27,10 +35,16 @@ export function PortalScene({ isDark = true }: PortalSceneProps) {
   const directionalColor = isDark ? "#bfe8ff" : "#ffffff";
   const bloomIntensity = isDark ? 1.2 : 0.5;
   const vignetteDarkness = isDark ? 0.75 : 0.3;
+  const enableShadows = deviceCapabilities.tier !== "low";
 
   return (
     <div className="absolute inset-0 z-0">
-      <Canvas shadows gl={{ antialias: true }} dpr={[1, 1.5]}>
+      <Canvas
+        shadows={enableShadows}
+        frameloop={!active ? "never" : reducedMotion ? "demand" : "always"}
+        gl={{ antialias: !deviceCapabilities.enablePostProcessing, powerPreference: "high-performance" }}
+        dpr={deviceCapabilities.tier === "low" ? 1 : [1, 1.5]}
+      >
         <color attach="background" args={[bgColor]} />
         <fog attach="fog" args={[fogColor, 10, 28]} />
 
@@ -41,7 +55,7 @@ export function PortalScene({ isDark = true }: PortalSceneProps) {
           position={[5, 8, 4]}
           intensity={directionalIntensity}
           color={directionalColor}
-          castShadow
+          castShadow={enableShadows}
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
         />
@@ -59,7 +73,37 @@ export function PortalScene({ isDark = true }: PortalSceneProps) {
         />
 
         <SceneRig isDark={isDark} deviceCapabilities={deviceCapabilities} />
-        <Environment preset={isDark ? "night" : "city"} />
+
+        {/* Locally rendered environment map: no multi-MB HDR download and no
+            third-party request that can block (or break) the whole scene. */}
+        <Environment resolution={64} frames={1}>
+          <color attach="background" args={[isDark ? "#05070f" : "#9aa7b8"]} />
+          <Lightformer
+            form="rect"
+            intensity={isDark ? 1.2 : 3}
+            color={isDark ? "#7fa6ff" : "#ffffff"}
+            position={[0, 6, 0]}
+            rotation-x={Math.PI / 2}
+            scale={[12, 12, 1]}
+          />
+          <Lightformer
+            form="rect"
+            intensity={isDark ? 0.6 : 1.5}
+            color={isDark ? "#3b5bd6" : "#e6efff"}
+            position={[-6, 1, -2]}
+            rotation-y={Math.PI / 2}
+            scale={[8, 3, 1]}
+          />
+          <Lightformer
+            form="rect"
+            intensity={isDark ? 0.6 : 1.5}
+            color={isDark ? "#3b5bd6" : "#fff4e0"}
+            position={[6, 1, 2]}
+            rotation-y={-Math.PI / 2}
+            scale={[8, 3, 1]}
+          />
+        </Environment>
+
         <OrbitControls
           enablePan={false}
           enableZoom={false}
@@ -68,7 +112,7 @@ export function PortalScene({ isDark = true }: PortalSceneProps) {
         />
 
         {deviceCapabilities.enablePostProcessing && (
-          <EffectComposer>
+          <EffectComposer multisampling={4}>
             <Bloom
               intensity={bloomIntensity}
               luminanceThreshold={0.12}
@@ -76,7 +120,7 @@ export function PortalScene({ isDark = true }: PortalSceneProps) {
               mipmapBlur
             />
             <ChromaticAberration
-              offset={new THREE.Vector2(0.0008, 0.0012)}
+              offset={CHROMATIC_OFFSET}
               modulationOffset={0}
               radialModulation={false}
             />

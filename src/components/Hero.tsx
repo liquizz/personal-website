@@ -63,12 +63,16 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
 
   return (
     <section ref={ref} id="hero" className="relative min-h-screen flex items-center pt-16">
-      <div className={`absolute inset-0 z-0 ${isDark ? 'bg-[#02050d]' : 'bg-[#f0f4f8]'}`} />
-      <SceneErrorBoundary>
-        <Suspense fallback={null}>
-          {showScene && <PortalScene isDark={isDark} active={inView} />}
-        </Suspense>
-      </SceneErrorBoundary>
+      <div className="absolute inset-0 z-0 bg-[#f0f4f8] dark:bg-[#02050d]" />
+      {/* Rendered only after hydration: a Suspense boundary in the prerendered HTML
+          would be forced back to client rendering by the updates that follow. */}
+      {showScene && (
+        <SceneErrorBoundary>
+          <Suspense fallback={null}>
+            <PortalScene isDark={isDark} active={inView} />
+          </Suspense>
+        </SceneErrorBoundary>
+      )}
 
       {/* Gradient overlay for better text contrast */}
       <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent via-black/5 to-black/20 dark:from-transparent dark:via-white/5 dark:to-white/20" />

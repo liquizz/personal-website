@@ -37,7 +37,7 @@ function detectGPUCapabilities(): GPUCapabilities | null {
       ? gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL)
       : gl.getParameter(gl.VENDOR);
 
-    return {
+    const capabilities: GPUCapabilities = {
       renderer,
       vendor,
       maxTextureSize: gl.getParameter(gl.MAX_TEXTURE_SIZE),
@@ -48,6 +48,12 @@ function detectGPUCapabilities(): GPUCapabilities | null {
       maxFragmentUniformVectors: gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS),
       maxVertexUniformVectors: gl.getParameter(gl.MAX_VERTEX_UNIFORM_VECTORS),
     };
+
+    // Browsers cap the number of live WebGL contexts; free this probe right away
+    // instead of waiting for GC so it doesn't compete with the real scene.
+    gl.getExtension('WEBGL_lose_context')?.loseContext();
+
+    return capabilities;
   } catch {
     return null;
   }
@@ -136,12 +142,20 @@ function scoreGPUCapabilities(gpu: GPUCapabilities): number {
  * Detect device performance capabilities based on hardware and screen metrics.
  * Returns a performance tier: 'low', 'medium', or 'high'.
  */
+let cachedCapabilities: DeviceCapabilities | null = null;
+
+const debugLog = (...args: unknown[]) => {
+  if (import.meta.env.DEV) console.log(...args);
+};
+
 export function detectDevicePerformance(): DeviceCapabilities {
+  if (cachedCapabilities) return cachedCapabilities;
+
   let score = 100;
 
   const gpuCapabilities = detectGPUCapabilities();
   if (gpuCapabilities) {
-    console.log('GPU detected:', gpuCapabilities.renderer);
+    debugLog('GPU detected:', gpuCapabilities.renderer);
     const gpuScore = scoreGPUCapabilities(gpuCapabilities);
     score = (score + gpuScore) / 2;
   } else {
@@ -199,13 +213,13 @@ export function detectDevicePerformance(): DeviceCapabilities {
   let tier: PerformanceTier;
   if (score >= 60) {
     tier = 'high';
-    console.log('Device detected as HIGH performance');
+    debugLog('Device detected as HIGH performance');
   } else if (score >= 30) {
     tier = 'medium';
-    console.log('Device detected as MEDIUM performance');
+    debugLog('Device detected as MEDIUM performance');
   } else {
     tier = 'low';
-    console.log('Device detected as LOW performance');
+    debugLog('Device detected as LOW performance');
   }
 
   const capabilities: DeviceCapabilities = {
@@ -216,5 +230,6 @@ export function detectDevicePerformance(): DeviceCapabilities {
     animationFrequency: tier === 'low' ? 0.5 : tier === 'medium' ? 0.75 : 1.0,
   };
 
+  cachedCapabilities = capabilities;
   return capabilities;
 }

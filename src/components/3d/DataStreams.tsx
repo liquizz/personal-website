@@ -37,7 +37,8 @@ export function DataStreams({ isDark = true, deviceCapabilities }: DataStreamsPr
     if (!mesh) return;
 
     const t = state.clock.elapsedTime;
-    STREAM_PTS.forEach((p, i) => {
+    for (let i = 0; i < streamCount; i++) {
+      const p = STREAM_PTS[i];
       const a = p.a + t * (0.12 + p.s * 0.08);
       dummy.current.position.set(
         Math.cos(a) * p.r,
@@ -48,7 +49,7 @@ export function DataStreams({ isDark = true, deviceCapabilities }: DataStreamsPr
       dummy.current.scale.set(0.02, 0.12 + Math.sin(t * 2 + p.o) * 0.04, 0.02);
       dummy.current.updateMatrix();
       mesh.setMatrixAt(i, dummy.current.matrix);
-    });
+    }
 
     mesh.instanceMatrix.needsUpdate = true;
   });

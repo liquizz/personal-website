@@ -15,15 +15,15 @@ export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
+    const heroSection = document.getElementById('hero');
     const handleScroll = () => {
-      const heroSection = document.getElementById('hero');
       if (heroSection) {
         const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
         setIsScrolled(window.scrollY > heroBottom - 100);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);

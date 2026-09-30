@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { Component, Suspense, lazy, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Download } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { PortalScene } from './3d/PortalScene';
+import { useInView } from 'react-intersection-observer';
+
+// three.js + react-three-fiber are the bulk of the JS; load them in a separate
+// chunk so the hero text paints without waiting for the 3D scene.
+const PortalScene = lazy(() =>
+  import('./3d/PortalScene').then((m) => ({ default: m.PortalScene }))
+);
+
+// If WebGL is unavailable or the scene throws, keep the rest of the page alive.
+class SceneErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  render() {
+    return this.state.failed ? null : this.props.children;
+  }
+}
 
 export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
   const { t } = useTranslation();
+  const { ref, inView } = useInView({ initialInView: true });
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-16">
-      <PortalScene isDark={isDark} />
+    <section ref={ref} id="hero" className="relative min-h-screen flex items-center pt-16">
+      <div className={`absolute inset-0 z-0 ${isDark ? 'bg-[#02050d]' : 'bg-[#f0f4f8]'}`} />
+      <SceneErrorBoundary>
+        <Suspense fallback={null}>
+          <PortalScene isDark={isDark} active={inView} />
+        </Suspense>
+      </SceneErrorBoundary>
 
       {/* Gradient overlay for better text contrast */}
       <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-b from-transparent via-black/5 to-black/20 dark:from-transparent dark:via-white/5 dark:to-white/20" />
@@ -80,6 +105,9 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
               <img
                 src="https://avatars.githubusercontent.com/u/45404995"
                 alt="Vladyslav Sheiko"
+                width={384}
+                height={384}
+                decoding="async"
                 className="rounded-full w-full h-full object-cover shadow-2xl relative z-10"
               />
               <div className="absolute inset-0 rounded-full shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] dark:shadow-[0_8px_32px_0_rgba(255,255,255,0.1)]" />

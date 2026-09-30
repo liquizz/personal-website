@@ -6,7 +6,7 @@
   "homepage": "https://liquiz.dev/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -16,7 +16,6 @@
     "@react-three/postprocessing": "^2.19.1",
     "framer-motion": "^12.34.4",
     "i18next": "^25.8.13",
-    "i18next-browser-languagedetector": "^8.2.1",
     "lucide-react": "^0.576.0",
     "postprocessing": "^6.38.3",
     "react": "^18.3.1",

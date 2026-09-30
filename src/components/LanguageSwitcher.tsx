@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { m, AnimatePresence } from 'framer-motion';
 import { Languages, ChevronDown } from 'lucide-react';
+import { persistLanguage } from '../i18n';
 
 interface LanguageSwitcherProps {
   isScrolled: boolean;
@@ -35,6 +36,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isScrolled }
 
   const changeLanguage = (langCode: string) => {
     i18n.changeLanguage(langCode);
+    persistLanguage(langCode);
     setIsOpen(false);
   };
 

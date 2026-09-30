@@ -13,7 +13,7 @@ const experiences = [
   },
   {
     company: 'boostCX',
-    period: '05/2023 - 03/2025',
+    period: '05/2023 - 04/2025',
     type: 'remote',
     key: 'boostCX'
   },

@@ -8,7 +8,7 @@ const skillCategories = [
   {
     key: 'backend',
     icon: <Code2 size={24} />,
-    skills: ['.NET', 'C#', 'ASP.NET', 'EF', 'Dapper'],
+    skills: ['.NET', 'C#', 'ASP.NET', '.NET Core', 'EF', 'Dapper', 'Python'],
   },
   {
     key: 'frontend',
@@ -23,12 +23,12 @@ const skillCategories = [
   {
     key: 'devops',
     icon: <Terminal size={24} />,
-    skills: ['RabbitMQ', 'Linux', 'Git', 'Docker', 'Jenkins', 'Azure DevOps'],
+    skills: ['RabbitMQ', 'Linux', 'Bash', 'PowerShell', 'Git', 'Docker', 'Jenkins', 'TeamCity', 'Octopus Deploy', 'Azure DevOps', 'Selenium', 'Playwright'],
   },
   {
     key: 'soft',
     icon: <Users size={24} />,
-    skills: ['skills.soft.flexibility', 'skills.soft.taskPrioritization', 'skills.soft.communication', 'skills.soft.teamwork'].map(key => ({ key })),
+    skills: ['skills.soft.flexibility', 'skills.soft.precision', 'skills.soft.taskPrioritization', 'skills.soft.issueResolution', 'skills.soft.teamwork', 'skills.soft.communication'].map(key => ({ key })),
   },
 ];
 

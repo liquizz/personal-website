@@ -7,14 +7,14 @@
         "toggleTheme": "Comutează Tema"
     },
     "hero": {
-        "title": "Inginer Software Senior",
-        "description": "Specializat în dezvoltarea backend, frontend și baze de date cu peste 7 ani de experiență. Expert în .NET, React, Angular, MSSQL. Pasionat de construirea de soluții scalabile și îmbunătățirea experienței clienților.",
+        "title": "Inginer Full-Stack .NET Senior",
+        "description": "Specializat în dezvoltarea backend, frontend și baze de date cu peste 7 ani de experiență. Expert în .NET, React, Angular, MSSQL. Pasionat de construirea de soluții scalabile și ușor de întreținut pentru platforme distribuite.",
         "contactMe": "Contactați-mă",
         "downloadCV": "Descărcați CV"
     },
     "about": {
         "title": "Despre mine",
-        "description": "Inginer software senior cu expertiză în .NET, React, Angular și baze de date. Experimentat în domeniul Managementului Experienței Clienților (CXM), consultanță, IoT și software HR. Abilitate dovedită de a conduce echipe, proiecta API-uri și îmbunătăți performanța sistemelor. Pasionat de învățare și mentorare.",
+        "description": "Inginer full-stack .NET senior cu expertiză în .NET, React, Angular și baze de date. Experimentat în fintech, Managementul Experienței Clienților (CXM), consultanță, IoT și software HR. Am lucrat cu succes atât în echipe mari (peste 30 de membri), cât și în grupuri agile mici (5–10 membri). Abilitate dovedită de a conduce echipe, proiecta API-uri și îmbunătăți performanța sistemelor. Pasionat de învățare și mentorare.",
         "location": "București, România"
     },
     "experience": {
@@ -24,24 +24,24 @@
         "onsite": "La birou",
         "companies": {
             "edenred": {
-                "role": "Inginer Senior de Automatizare (SDET, .NET)",
-                "description": "Dezvoltarea și întreținerea framework-urilor de teste automatizate, colaborarea cu echipe multidisciplinare pentru a asigura calitatea software-ului și a îmbunătăți acoperirea testelor pentru aplicații de întreprindere."
+                "role": "Inginer Software Senior (.NET)",
+                "description": "Dezvolt funcționalități într-o arhitectură de microservicii pe .NET 10 pentru o platformă fintech, integrez furnizori terți din industria de petrol și gaze prin API-uri și pipeline-uri de date reziliente, transform cerințele de business în specificații tehnice și promovez cod curat, testare și CI/CD."
             },
             "boostCX": {
-                "role": "Inginer Software Senior (.NET)",
-                "description": "Am dezvoltat soluții CXM, am condus designul modulelor API, am condus o echipă de 2 persoane, am colectat cerințele clienților."
+                "role": "Inginer Software Full-Stack Senior (.NET, React)",
+                "description": "Am dezvoltat o platformă CXM pentru industriile auto, bancară, de asigurări și energetică, am creat un sistem de sugestii pentru sondaje CX, am condus o echipă de 2 dezvoltatori .NET, am proiectat module API."
             },
             "infopulse": {
-                "role": "Inginer Software Mediu (.NET, Angular)",
-                "description": "Am construit soluții pentru firma Big Four, am refactorizat codul legacy, am scris teste unitare, am participat la planificare."
+                "role": "Inginer Software Full-Stack Mediu (.NET, Angular)",
+                "description": "Am construit soluții pentru o firmă Big Four, am refactorizat cod legacy .NET Core, am scris teste unitare cu xUnit și Moq, am efectuat code și design review-uri, am participat la planificare."
             },
             "oitl": {
                 "role": "Inginer Software Junior Avansat (.NET, React)",
-                "description": "Am dezvoltat aplicații IoT, am optimizat bazele de date, am configurat pipeline-uri CI/CD."
+                "description": "Am dezvoltat aplicații web IoT cu .NET Core, Entity Framework și React, am optimizat baze de date SQL Server, am configurat pipeline-uri CI/CD în TeamCity și Octopus Deploy."
             },
             "keepSolid": {
-                "role": "Inginer Software Junior (.NET)",
-                "description": "Am îmbunătățit calitatea produsului, am optimizat bazele de date, am acoperit codul legacy cu teste unitare."
+                "role": "Inginer Software Junior (.NET, React)",
+                "description": "Am redus la zero bug-urile de stabilizare în 2 funcționalități critice, am optimizat baze de date MySQL, am acoperit codul legacy cu teste unitare."
             }
         }
     },
@@ -56,9 +56,11 @@
         },
         "soft": {
             "flexibility": "Flexibilitate",
+            "precision": "Precizie & Rigurozitate",
             "taskPrioritization": "Prioritizarea Sarcinilor",
-            "communication": "Comunicare",
-            "teamwork": "Lucru în echipă"
+            "issueResolution": "Rezolvarea Problemelor",
+            "teamwork": "Lucru în echipă",
+            "communication": "Comunicare"
         }
     },
     "contact": {

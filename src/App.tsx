@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HelmetProvider } from 'react-helmet-async';
+import { LazyMotion } from 'framer-motion';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -8,6 +8,8 @@ import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { SEO } from './components/SEO';
 import { useTranslation } from 'react-i18next';
+
+const loadMotionFeatures = () => import('./utils/motionFeatures').then((mod) => mod.default);
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -35,7 +37,7 @@ function App() {
   };
 
   return (
-    <HelmetProvider>
+    <LazyMotion features={loadMotionFeatures} strict>
       <SEO lang={i18n.language} />
       <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200">
         <Header isDark={isDark} toggleTheme={toggleTheme} />
@@ -45,7 +47,7 @@ function App() {
         <Skills />
         <Contact />
       </div>
-    </HelmetProvider>
+    </LazyMotion>
   );
 }
 

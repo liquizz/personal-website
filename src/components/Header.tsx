@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -55,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
       </div>
       <nav className="container mx-auto px-6 py-4 relative z-10">
         <div className="flex items-center justify-between">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className={`text-2xl font-bold transition-colors duration-300 ${
@@ -65,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
             }`}
           >
             VS
-          </motion.div>
+          </m.div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-4">
@@ -85,6 +85,7 @@ export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
             <LanguageSwitcher isScrolled={isScrolled} />
             <button
               onClick={toggleTheme}
+              aria-label={t('header.toggleTheme')}
               className={`p-2 rounded-full transition-all duration-300 ${
                 isScrolled
                   ? 'bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50'
@@ -100,6 +101,8 @@ export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
             <LanguageSwitcher isScrolled={isScrolled} />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Menu"
+              aria-expanded={isMenuOpen}
               className={`p-2 rounded-lg transition-colors duration-300 ${
                 isScrolled
                   ? 'bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50'
@@ -113,7 +116,7 @@ export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="md:hidden mt-4 pb-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md rounded-lg p-4 shadow-lg border border-white/20 dark:border-white/10"
@@ -137,7 +140,7 @@ export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
             >
               {t('header.toggleTheme')}
             </button>
-          </motion.div>
+          </m.div>
         )}
       </nav>
     </header>

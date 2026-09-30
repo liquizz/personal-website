@@ -6,9 +6,16 @@ on:
   workflow_dispatch:
 
 jobs:
+  security:
+    uses: ./.github/workflows/security.yml
+    permissions:
+      contents: read
+      security-events: write
+
   build-and-deploy:
+    needs: security
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3

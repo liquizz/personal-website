@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Briefcase } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -47,7 +47,7 @@ export const Experience: React.FC = () => {
   return (
     <section id="experience" className="py-20">
       <div className="container mx-auto px-6">
-        <motion.div
+        <m.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -58,7 +58,7 @@ export const Experience: React.FC = () => {
           </h2>
           <div className="max-w-4xl mx-auto">
             {experiences.map((exp, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -89,10 +89,10 @@ export const Experience: React.FC = () => {
                     {t(`experience.companies.${exp.key}.description`)}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

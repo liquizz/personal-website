@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Linkedin, Send, Github } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -25,7 +25,7 @@ export const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-20">
       <div className="container mx-auto px-6">
-        <motion.div
+        <m.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -117,7 +117,7 @@ export const Contact: React.FC = () => {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
                 </div>
-                <motion.button
+                <m.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   type="submit"
@@ -125,11 +125,11 @@ export const Contact: React.FC = () => {
                 >
                   <Send size={20} />
                   {t('contact.form.send')}
-                </motion.button>
+                </m.button>
               </form>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

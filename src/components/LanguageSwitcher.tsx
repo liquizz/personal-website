@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Languages, ChevronDown } from 'lucide-react';
 
 interface LanguageSwitcherProps {
@@ -40,7 +40,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isScrolled }
 
   return (
     <div className="relative" ref={dropdownRef}>
-      <motion.button
+      <m.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 ${
@@ -56,11 +56,11 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isScrolled }
           size={16}
           className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
         />
-      </motion.button>
+      </m.button>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -87,7 +87,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isScrolled }
                 </button>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

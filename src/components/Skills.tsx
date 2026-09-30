@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code2, Database, Terminal, Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -42,7 +42,7 @@ export const Skills: React.FC = () => {
   return (
     <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-800/50">
       <div className="container mx-auto px-6">
-        <motion.div
+        <m.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -53,7 +53,7 @@ export const Skills: React.FC = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skillCategories.map((category, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
@@ -76,10 +76,10 @@ export const Skills: React.FC = () => {
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

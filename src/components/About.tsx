@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +14,7 @@ export const About: React.FC = () => {
   return (
     <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800/50">
       <div className="container mx-auto px-6">
-        <motion.div
+        <m.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -32,7 +32,7 @@ export const About: React.FC = () => {
               <span>{t('about.location')}</span>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

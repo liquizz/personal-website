@@ -1,5 +1,5 @@
 import React, { Component, Suspense, lazy, useEffect, useState, type ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Mail, Linkedin, Download } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
@@ -76,9 +76,9 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
       {/* Content - always on top */}
       <div className="container mx-auto px-6 relative z-30">
         <div className="flex flex-col md:flex-row items-center justify-between">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+          <m.div
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.6 }}
             className="md:w-1/2 backdrop-blur-md bg-white/30 dark:bg-black/30 p-8 rounded-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] dark:shadow-[0_8px_32px_0_rgba(255,255,255,0.1)] border border-white/20 dark:border-white/10"
             style={{
@@ -96,7 +96,7 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
               {t('hero.description')}
             </p>
             <div className="flex flex-wrap gap-4">
-              <motion.a
+              <m.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="mailto:vladyslav.sheiko@outlook.com"
@@ -104,8 +104,8 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
               >
                 <Mail size={20} />
                 {t('hero.contactMe')}
-              </motion.a>
-              <motion.a
+              </m.a>
+              <m.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="https://www.linkedin.com/in/vladyslav-sheiko"
@@ -115,8 +115,8 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
               >
                 <Linkedin size={20} />
                 LinkedIn
-              </motion.a>
-              <motion.a
+              </m.a>
+              <m.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="/assets/files/VladyslavSheikoResume.pdf"
@@ -125,12 +125,12 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
               >
                 <Download size={20} />
                 {t('hero.downloadCV')}
-              </motion.a>
+              </m.a>
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+          </m.div>
+          <m.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="md:w-1/2 mt-12 md:mt-0"
           >
@@ -148,7 +148,7 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
               />
               <div className="absolute inset-0 rounded-full shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] dark:shadow-[0_8px_32px_0_rgba(255,255,255,0.1)]" />
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

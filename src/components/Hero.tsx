@@ -3,6 +3,7 @@ import { m } from 'framer-motion';
 import { Mail, Linkedin, Download } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
+import { detectDevicePerformance } from '../utils/deviceDetection';
 
 // three.js + react-three-fiber are the bulk of the JS; load them in a separate
 // chunk so the hero text paints without waiting for the 3D scene.
@@ -23,9 +24,17 @@ class SceneErrorBoundary extends Component<{ children: ReactNode }, { failed: bo
   }
 }
 
+// The scene is ~275 KB of JS plus a second of main-thread work on mobile; skip it
+// where that cost outweighs the visual: visitors on Save-Data and low-end devices.
+function shouldRenderScene(): boolean {
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+  if (connection?.saveData) return false;
+  return detectDevicePerformance().tier !== 'low';
+}
+
 // Mount the scene only once the page has loaded and the main thread is idle, so
 // parsing/compiling the three.js chunk doesn't compete with first paint and input.
-function useIdleAfterLoad(): boolean {
+function useSceneAfterLoad(): boolean {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -34,9 +43,9 @@ function useIdleAfterLoad(): boolean {
 
     const schedule = () => {
       if (typeof window.requestIdleCallback === 'function') {
-        idleId = window.requestIdleCallback(() => setReady(true), { timeout: 2000 });
+        idleId = window.requestIdleCallback(() => setReady(shouldRenderScene()), { timeout: 2000 });
       } else {
-        timeoutId = window.setTimeout(() => setReady(true), 200);
+        timeoutId = window.setTimeout(() => setReady(shouldRenderScene()), 200);
       }
     };
 
@@ -59,7 +68,7 @@ function useIdleAfterLoad(): boolean {
 export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
   const { t } = useTranslation();
   const { ref, inView } = useInView({ initialInView: true });
-  const showScene = useIdleAfterLoad();
+  const showScene = useSceneAfterLoad();
 
   return (
     <section ref={ref} id="hero" className="relative min-h-screen flex items-center pt-16">
@@ -93,9 +102,9 @@ export const Hero: React.FC<{ isDark: boolean }> = ({ isDark }) => {
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white">
               Vladyslav Sheiko
             </h1>
-            <h2 className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 mb-6">
+            <p className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 mb-6">
               {t('hero.title')}
-            </h2>
+            </p>
             <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg">
               {t('hero.description')}
             </p>

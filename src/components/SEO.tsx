@@ -10,7 +10,7 @@ interface SEOProps {
 const translations = {
   en: {
     title: 'Vladyslav Sheiko - Senior Full-Stack .NET Engineer',
-    description: 'Senior Full-Stack .NET Engineer specializing in .NET, React, Angular, and database development with over 7 years of experience in Fintech, CXM, consulting, and IoT.',
+    description: 'Senior Full-Stack .NET Engineer in Bucharest with 7+ years building fintech, CXM and IoT platforms using .NET, C#, React, Angular and SQL Server.',
   },
   ua: {
     title: 'Владислав Шейко - Провідний Full-Stack .NET Інженер',

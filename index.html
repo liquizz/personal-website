@@ -5,9 +5,12 @@
     <link rel="icon" type="image/png" href="/assets/images/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" as="image" href="/assets/images/avatar-460.webp" imagesrcset="/assets/images/avatar-256.webp 256w, /assets/images/avatar-460.webp 460w" imagesizes="(min-width: 768px) 384px, 256px" fetchpriority="high" />
-    <script src="/theme-init.js"></script>
+    <!-- Sets the theme before first paint so the prerendered HTML shows in the right
+         theme. Inline to avoid a render-blocking request; the CSP allows it by hash,
+         printed by scripts/prerender.mjs at build time. -->
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.classList.add('dark')}catch(e){}})()</script>
     <title>Vladyslav Sheiko - Senior Full-Stack .NET Engineer</title>
-    <meta name="description" content="Senior Full-Stack .NET Engineer specializing in .NET, React, Angular, and database development with over 7 years of experience in Fintech, CXM, consulting, and IoT." />
+    <meta name="description" content="Senior Full-Stack .NET Engineer in Bucharest with 7+ years building fintech, CXM and IoT platforms using .NET, C#, React, Angular and SQL Server." />
     <meta name="author" content="Vladyslav Sheiko" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://liquiz.dev/" />
@@ -17,7 +20,7 @@
     <meta property="og:site_name" content="Vladyslav Sheiko" />
     <meta property="og:url" content="https://liquiz.dev/" />
     <meta property="og:title" content="Vladyslav Sheiko - Senior Full-Stack .NET Engineer" />
-    <meta property="og:description" content="Senior Full-Stack .NET Engineer specializing in .NET, React, Angular, and database development with over 7 years of experience in Fintech, CXM, consulting, and IoT." />
+    <meta property="og:description" content="Senior Full-Stack .NET Engineer in Bucharest with 7+ years building fintech, CXM and IoT platforms using .NET, C#, React, Angular and SQL Server." />
     <meta property="og:image" content="https://liquiz.dev/assets/images/og.png" />
     <meta property="og:image:width" content="800" />
     <meta property="og:image:height" content="420" />
@@ -26,33 +29,69 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Vladyslav Sheiko - Senior Full-Stack .NET Engineer" />
-    <meta name="twitter:description" content="Senior Full-Stack .NET Engineer specializing in .NET, React, Angular, and database development with over 7 years of experience in Fintech, CXM, consulting, and IoT." />
+    <meta name="twitter:description" content="Senior Full-Stack .NET Engineer in Bucharest with 7+ years building fintech, CXM and IoT platforms using .NET, C#, React, Angular and SQL Server." />
     <meta name="twitter:image" content="https://liquiz.dev/assets/images/og.png" />
 
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Vladyslav Sheiko",
-        "jobTitle": "Senior Full-Stack .NET Engineer",
-        "description": "Senior Full-Stack .NET Engineer specializing in .NET, React, Angular, and database development with over 7 years of experience in Fintech, CXM, consulting, and IoT.",
-        "image": "https://liquiz.dev/assets/images/og.png",
+        "@type": "ProfilePage",
         "url": "https://liquiz.dev/",
-        "email": "mailto:vladyslav.sheiko@outlook.com",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Bucharest",
-          "addressCountry": "RO"
-        },
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Edenred"
-        },
-        "knowsAbout": [".NET", "C#", "React", "Angular", "MSSQL", "Microservices", "Fintech"],
-        "sameAs": [
-          "https://www.linkedin.com/in/vladyslav-sheiko",
-          "https://github.com/liquizz"
-        ]
+        "name": "Vladyslav Sheiko - Senior Full-Stack .NET Engineer",
+        "inLanguage": "en",
+        "mainEntity": {
+          "@type": "Person",
+          "@id": "https://liquiz.dev/#person",
+          "name": "Vladyslav Sheiko",
+          "alternateName": "liquiz",
+          "jobTitle": "Senior Full-Stack .NET Engineer",
+          "description": "Senior Full-Stack .NET Engineer specializing in .NET, React, Angular, and database development with over 7 years of experience in Fintech, CXM, consulting, and IoT.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://liquiz.dev/assets/images/avatar-460.webp",
+            "width": 460,
+            "height": 460
+          },
+          "url": "https://liquiz.dev/",
+          "email": "mailto:vladyslav.sheiko@outlook.com",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bucharest",
+            "addressCountry": "RO"
+          },
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Edenred"
+          },
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Senior Full-Stack .NET Engineer",
+            "occupationLocation": {
+              "@type": "City",
+              "name": "Bucharest"
+            },
+            "skills": ".NET, C#, ASP.NET Core, React, Angular, TypeScript, MSSQL, PostgreSQL, Microservices, RabbitMQ, Docker"
+          },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Odessa National Telecommunications Academy"
+          },
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "degree",
+            "name": "Master of Computer Software Engineering",
+            "recognizedBy": {
+              "@type": "CollegeOrUniversity",
+              "name": "Odessa National Telecommunications Academy"
+            }
+          },
+          "knowsAbout": [".NET", "C#", "React", "Angular", "MSSQL", "Microservices", "Fintech"],
+          "knowsLanguage": ["uk", "en", "de"],
+          "sameAs": [
+            "https://www.linkedin.com/in/vladyslav-sheiko",
+            "https://github.com/liquizz"
+          ]
+        }
       }
     </script>
   </head>

@@ -21,7 +21,7 @@ function subscribeToTheme(onChange: () => void) {
 }
 
 function App() {
-  // The theme lives in the <html> "dark" class, set before paint by public/theme-init.js.
+  // The theme lives in the <html> "dark" class, set before paint by the inline script in index.html.
   // During hydration React uses the server snapshot (light, as prerendered), then the real value.
   const isDark = useSyncExternalStore(subscribeToTheme, getIsDark, () => false);
 

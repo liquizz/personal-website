@@ -19,6 +19,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          # Full history: scripts/prerender.mjs reads the last content commit date for sitemap lastmod.
+          fetch-depth: 0
         
       - name: Set up Node.js
         uses: actions/setup-node@v3

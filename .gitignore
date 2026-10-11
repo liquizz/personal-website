@@ -131,3 +131,6 @@ dist
 .sisyphus
 
 dist-ssr
+
+# SonarQube scanner working directory
+.scannerwork/
